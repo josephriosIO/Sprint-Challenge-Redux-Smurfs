@@ -26,6 +26,7 @@ class AddSmurf extends Component {
     };
 
     this.props.addSmurf(smurf);
+
     this.props.history.push("/");
 
     this.setState({
@@ -68,7 +69,7 @@ class AddSmurf extends Component {
 }
 
 const mapStateToProps = state => ({
-  addingSmurf: state.addingSmurf
+  fetchingSmurfs: state.fetchingSmurfs
 });
 
 export default connect(
