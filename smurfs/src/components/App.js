@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SmurfsList from "./SmurfsList";
+import AddSmurf from "./AddSmurf";
 import { getSmurfs } from "../actions";
 import { Link, Route } from "react-router-dom";
 import "./App.css";
@@ -18,15 +19,19 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
+        <Link to="/add">Add Smurf</Link>
+        <Link to="/">home</Link>
         <div>Welcome to your Redux version of Smurfs!</div>
         {this.props.gotSmurfs
           ? this.props.smurfs.map(smurf => (
               <Route
+                exact
                 path="/"
                 render={props => <SmurfsList {...props} smurf={smurf} />}
               />
             ))
           : null}
+        <Route path="/add" component={AddSmurf} />
       </div>
     );
   }
