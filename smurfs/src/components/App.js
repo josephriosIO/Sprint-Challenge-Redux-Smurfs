@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SmurfsList from "./SmurfsList";
 import { getSmurfs } from "../actions";
+import { Link, Route } from "react-router-dom";
 import "./App.css";
 /*
  to wire this component up you're going to need a few things.
@@ -20,7 +21,10 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         {this.props.gotSmurfs
           ? this.props.smurfs.map(smurf => (
-              <SmurfsList key={smurf.id} smurf={smurf} />
+              <Route
+                path="/"
+                render={props => <SmurfsList {...props} smurf={smurf} />}
+              />
             ))
           : null}
       </div>
